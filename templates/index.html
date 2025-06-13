@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.css" rel="stylesheet" type="text/css">
-    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.css" rel="stylesheet" type="text/css">    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js"></script>
     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js"></script>
     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -165,86 +166,7 @@
                 <button class="tab-button" data-tab="time">
                     <i data-lucide="trending-up" class="inline w-5 h-5 mr-2"></i>
                     Temporal Trends
-                </button>
-            </div>
-
-            <div class="tab-content">
-                <!-- Statistical Tab -->
-                <div id="statistical" class="tab-pane active">
-                    <div class="chart-title">
-                        <i data-lucide="bar-chart-3" class="inline w-6 h-6 mr-2 text-blue-600"></i>
-                        Statistical Category: Bar Chart
-                    </div>
-                    <p class="chart-description">
-                        This bar chart visually represents the magnitude of the selected indicator across different Pacific Island Countries and territories. It allows for quick comparisons of values among various regions, providing immediate insights into which countries stand out in terms of the chosen indicator.
-                    </p>
-                    <div class="visualization-container">
-                        {% if bokeh_script_bar %}
-                            {{ bokeh_div_bar|safe }}
-                            {{ bokeh_script_bar|safe }}
-                        {% else %}
-                            <div class="loading">
-                                <i data-lucide="bar-chart" class="w-12 h-12 text-gray-400 mr-4"></i>
-                                <div>
-                                    <p class="text-gray-500 font-medium">No data selected</p>
-                                    <p class="text-gray-400 text-sm">Choose an indicator and click "Generate Visualizations" to see the bar chart</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <!-- Geographical Tab -->
-                <div id="geographical" class="tab-pane">
-                    <div class="chart-title">
-                        <i data-lucide="map-pin" class="inline w-6 h-6 mr-2 text-green-600"></i>
-                        Geographical Category: Box Plot
-                    </div>
-                    <p class="chart-description">
-                        This box plot provides a statistical summary of the selected indicator's distribution across countries. It displays the median, quartiles, and potential outliers, offering a clear view of the spread and central tendency of the data.
-                    </p>
-                    <div class="visualization-container">
-                        {% if bokeh_script_box %}
-                            {{ bokeh_div_box|safe }}
-                            {{ bokeh_script_box|safe }}
-                        {% else %}
-                            <div class="loading">
-                                <i data-lucide="map" class="w-12 h-12 text-gray-400 mr-4"></i>
-                                <div>
-                                    <p class="text-gray-500 font-medium">No data selected</p>
-                                    <p class="text-gray-400 text-sm">Choose an indicator and click "Generate Visualizations" to see the box plot</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <!-- Time Tab -->
-                <div id="time" class="tab-pane">
-                    <div class="chart-title">
-                        <i data-lucide="line-chart" class="inline w-6 h-6 mr-2 text-purple-600"></i>
-                        Time/Frequency Category: Line Chart
-                    </div>
-                    <p class="chart-description">
-                        This line chart illustrates the trend and evolution of the selected indicator over different time periods. Each line represents a specific country or territory, allowing for an easy comparison of their performance or changes over time.
-                    </p>
-                    <div class="visualization-container">
-                        {% if bokeh_script_line %}
-                            {{ bokeh_div_line|safe }}
-                            {{ bokeh_script_line|safe }}
-                        {% else %}
-                            <div class="loading">
-                                <i data-lucide="trending-up" class="w-12 h-12 text-gray-400 mr-4"></i>
-                                <div>
-                                    <p class="text-gray-500 font-medium">No data selected</p>
-                                    <p class="text-gray-400 text-sm">Choose an indicator and click "Generate Visualizations" to see the line chart</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
+                </button>            </div>
 
         {% if selected_indicator_display_name %}
         <div class="m-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -463,9 +385,8 @@
             }
 
             if (activeTabId) {
-                const activeTabButton = document.getElementById(`${activeTabId}-tab`);
-                if (activeTabButton) {
-                    // Manually activate the tab using Flowbite's logic if available
+                const activeTabButton = document.getElementById(`${activeTabId}-tab`);                if (activeTabButton) {
+                    // Manually activate the tab using custom JavaScript logic
                     const targetTabContent = document.getElementById(activeTabId);
                     const allTabContents = document.querySelectorAll('#default-tab-content > div');
                     const allTabButtons = document.querySelectorAll('#default-tab button');
@@ -485,13 +406,12 @@
             } else if (defaultTabButtons.length > 0) {
                 // Fallback to activating the first tab if no specific category selected
                 defaultTabButtons[0].click();
-            }
-        });
+            }        });
 
-        // Initialize Flowbite tabs
-        document.querySelectorAll('[data-tabs-toggle]').forEach(triggerEl => {
-            const targetEl = document.querySelector(triggerEl.getAttribute('data-tabs-target'));
-            new Flowbite.Tabs(triggerEl, targetEl);
+        // Initialize custom tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality is handled by the manual activation code above
+            // and click event listeners on tab buttons
         });
 
     </script>
